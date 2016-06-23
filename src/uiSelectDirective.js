@@ -228,6 +228,22 @@ uis.directive('uiSelect',
           if (transcludedNoChoice.length == 1) {
             element.querySelectorAll('.ui-select-no-choice').replaceWith(transcludedNoChoice);
           }
+          
+          var transcludedHeader = transcluded.querySelectorAll('.ui-select-header');
+          if(transcludedHeader && transcludedHeader.length){
+            transcludedHeader.removeAttr('ui-select-header'); //To avoid loop in case directive as attr
+            transcludedHeader.removeAttr('data-ui-select-header'); // Properly handle HTML5 data-attributes
+            $timeout(function(){
+              transcludedChoices.prepend(transcludedHeader);
+            });
+          }
+
+          var transcludedFooter = transcluded.querySelectorAll('.ui-select-footer');
+          if(transcludedFooter && transcludedFooter.length){
+            transcludedFooter.removeAttr('ui-select-footer'); //To avoid loop in case directive as attr
+            transcludedFooter.removeAttr('data-ui-select-footer'); // Properly handle HTML5 data-attributes
+            transcludedChoices.append(transcludedFooter);
+          }
         });
 
         // Support for appending the select field to the body when its open
