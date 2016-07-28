@@ -234,7 +234,7 @@ uis.directive('uiSelect',
             transcludedHeader.removeAttr('ui-select-header'); //To avoid loop in case directive as attr
             transcludedHeader.removeAttr('data-ui-select-header'); // Properly handle HTML5 data-attributes
             $timeout(function(){
-              transcludedChoices.prepend(transcludedHeader);
+              element.querySelectorAll('.ui-select-choices').prepend(transcludedHeader);
             });
           }
 
@@ -242,7 +242,9 @@ uis.directive('uiSelect',
           if(transcludedFooter && transcludedFooter.length){
             transcludedFooter.removeAttr('ui-select-footer'); //To avoid loop in case directive as attr
             transcludedFooter.removeAttr('data-ui-select-footer'); // Properly handle HTML5 data-attributes
-            transcludedChoices.append(transcludedFooter);
+            $timeout(function() {
+              element.querySelectorAll('.ui-select-choices').append(transcludedFooter);
+            });
           }
         });
 
