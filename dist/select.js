@@ -1,7 +1,7 @@
 /*!
  * ui-select
  * http://github.com/angular-ui/ui-select
- * Version: 0.18.0 - 2016-07-28T12:54:14.891Z
+ * Version: 0.18.0 - 2016-07-28T13:21:51.148Z
  * License: MIT
  */
 
@@ -1382,6 +1382,22 @@ uis.directive('uiSelect',
   };
 }]);
 
+uis.directive('uiSelectFooter', function(){
+  return {
+    template: '<li class="ui-select-footer" ng-transclude></li>',
+    restrict: 'EA',
+    transclude: true,
+    replace: true
+  };
+});
+uis.directive('uiSelectHeader', function(){
+  return {
+    template: '<li class="ui-select-header" ng-transclude></li>',
+    restrict: 'EA',
+    transclude: true,
+    replace: true
+  };
+});
 uis.directive('uiSelectMatch', ['uiSelectConfig', function(uiSelectConfig) {
   return {
     restrict: 'EA',
